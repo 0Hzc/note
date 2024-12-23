@@ -36,3 +36,97 @@ if __name__ == "__main__":
 
     run_yolo_predict(model_path, image_path)
 ```
+
+
+
+## C++相关学习
+### 类的定义
+
+创建头文件以及源文件
+1.新建一个名为test.cpp的源文件
+```cpp
+#include "test.h"       //包含自定义的头文件使用双引号
+#include <iostream>     //使用提供的头文件使用<>
+
+test_print::test_print(){   //定义构造函数，使用::指明类
+   int age = 18; //初始化代码
+}
+
+test_print::~test_print(){
+    //清理代码
+}
+
+void test_print::print{     //定义自定义print函数
+    std::cout <<"Hello" << std::endl;
+    /*
+    这一句是C++中的输出语句
+    "std"是类名，"std::"是标准命名空间
+    "cout"是控制台输出
+    "<<"是输出运算符
+    "Hello"是要输出的字符串
+    "endl"是结束当前行并刷新输出缓冲区
+    */
+
+    std::cout << "年龄是：" << age <<std::endl;
+}
+```
+
+1.2 进阶版，使用构造函数来传递变量
+```cpp
+#include "test.h"
+#include <iostream>
+
+test_print::test_print(){
+    test_age =18;   //此处不能使用int test_age ,使用了int 会被认定为构造函数的局部变量
+}
+test_print::~test_print(){
+}
+void test_print::print_test(int age){
+    int ages =18;
+    std::cout << "Hello\n" << std::endl;
+    std::cout << "初始化年龄是：" << test_age << std::endl;
+    std::cout << "年龄是：" << age << std::endl;
+    std::cout << "年龄是：" << ages << std::endl;
+}
+```
+
+
+
+
+2.新建一个名为test.h的头文件
+```cpp
+//
+//使用ifndef endif语句来实现头文件包含
+#ifndef TEST_H
+#define TEST_H
+
+//主体内容中声明在源文件中定义的类
+class test_print {    //此行用于声明类名
+public:             //此行用于声明类中的公共成员
+    test_print();   //此行用于声明类的构造函数
+    ~test_print();  //此行用于声明类的析构函数
+    void print();   //此行用于声明类中编写的函数
+private:            //此行用于声明类中的私有成员
+    //与公共成员一致
+};
+#endif
+```
+
+3.新建main.cpp
+```cpp
+#include "test.h"
+
+int main(){
+    test_print tp;
+    tp.print();
+    return 0;
+}
+```
+
+运行c++程序，与C的程序一致，编辑器没有提供一键编译的话，使用命令进行编译
+```shell
+#使用g++编译源文件
+g++ main.cpp test.cpp -o test
+
+#参数说明，-o表示生产一个名为test可执行程序,不使用-o的话，会自动生成a.out文件
+```
