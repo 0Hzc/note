@@ -49,7 +49,6 @@ if __name__ == "__main__":
 #include <iostream>     //使用提供的头文件使用<>
 
 test_print::test_print(){   //定义构造函数，使用::指明类
-   int age = 18; //初始化代码
 }
 
 test_print::~test_print(){
@@ -65,8 +64,8 @@ void test_print::print{     //定义自定义print函数
     "<<"是输出运算符
     "Hello"是要输出的字符串
     "endl"是结束当前行并刷新输出缓冲区
-    */
-
+    */ 
+    int age = 18;
     std::cout << "年龄是：" << age <<std::endl;
 }
 ```
@@ -130,3 +129,33 @@ g++ main.cpp test.cpp -o test
 
 #参数说明，-o表示生产一个名为test可执行程序,不使用-o的话，会自动生成a.out文件
 ```
+
+### 初始化列表
+基本语法
+```cpp
+/*类名::构造函数():初始化内容1,初始化内容2,初始化内容3
+{
+    //构造函数体
+}
+*/
+
+```
+
+## Qt相关学习
+### 命名空间
+```cpp
+/*
+定义：
+QT_BEGIN_NAMESPACE
+namespace Ui {
+    class yolo_UI;  //前向类的声明
+}
+QT_END_NAMESPACE
+
+解释：
+1. namespace Ui创建了一个名为Ui的命名空间，在Qt中用来存放由*.ui文件生成的界面类的地方
+2. 前向声明是为了告诉编译器，前向声明里的类会在其他地方进行定义
+*/
+```
+
+
